@@ -6,42 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   isAuth = false;
-   lastUpdate = new Promise((resolve,reject)=>{
-   const date = new Date();
-   setTimeout(()=>{resolve(date);},2000);
-   });
-
-   appareilOne = 'Machine à laver';
-   appareilTwo = 'Frigo';
-   appareilThree = 'Ordinateur';
-
-   appareilStatusOn = "allumé"
-   appareilStatusOff = "éteint"
-//define an array manuelly
-   appareils = [
+   posts = [
       {
-         name:'machine à café',
-         status:'éteint'
+         title: 'Gilet jaune',
+         content: 'il y a des manifestation très grave à Avenue Champs-Élysé aujourd\'hui',
+         loveIts: 2,
+         created_at:Date.now()
       },
       {
-         name:'machine à laver',
-         status:'allumé'
+         title: 'Jamal Khashoggi',
+         content: 'une tragidie très grave commis par les service des enseignements saoudiens.',
+         loveIts: -1,
+         created_at:new Date(2018, 11, 17)
       },
       {
-         name:'machine à verseille',
-         status:'éteint'
+         title: 'Brexit',
+         content: 'Jour de divorce en Europe pour l\'Angleterre',
+         loveIts: 1,
+         created_at:new Date(2018, 11, 17)
       }
    ];
-
-   constructor(){
-      setTimeout(
-         ()=>{
-               this.isAuth = true;
-            },4000
-      );
-   }
-   onLight(){
-      console.log("tout allumé.");
-   }
+   constructor(){}
 }
