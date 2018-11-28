@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { AppareilService } from './services/appareil.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
    posts = [
       {
          title: 'Gilet jaune',
@@ -26,5 +27,25 @@ export class AppComponent {
          created_at:new Date(2018, 11, 17)
       }
    ];
-   constructor(){}
+   isAuth = false;
+   appareils:any[];
+
+   constructor(private appaeilService :AppareilService){
+      setTimeout(
+         ()=>{
+         this.isAuth = true;
+      },4000);
+   }
+
+   ngOnInit(){
+      this.appareils = this.appaeilService.appareils;
+   }
+
+   putAllOn(){
+      this.appaeilService.switchOnAll();
+   }
+
+   putAllOff(){
+      this.appaeilService.switchOffAll();
+   }
 }

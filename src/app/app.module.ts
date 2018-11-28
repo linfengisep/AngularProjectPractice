@@ -7,18 +7,23 @@ import { FormsModule } from '@angular/forms';
 import { PostListComponentComponent } from './post-list-component/post-list-component.component';
 import { PostListItemComponentComponent } from './post-list-item-component/post-list-item-component.component';
 
+import { AppareilService } from './services/appareil.service';
+import { AppareilComponent } from './appareil/appareil.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponentComponent,
-    PostListItemComponentComponent
+    PostListItemComponentComponent,
+    AppareilComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [AppareilService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{
+}
