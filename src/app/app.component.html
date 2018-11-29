@@ -1,4 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<nav class = "navbar navbar-default">
+   <div class = "container-fluid">
+      <ul class = "nav navbar-nav">
+         <li routerLinkActive = "active"><a routerLink ="auth">Authentification</a></li>
+         <li routerLinkActive = "active"><a routerLink ="appareils">Appareils</a></li>
+      </ul>
+   </div>
+</nav>
 <div style="text-align:center">
   <h1>
     Bienvenue, Merci pour corriger mon projet!
@@ -7,25 +15,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>Posts</h2>
-      <button class="btn btn-success" (click)="putAllOn()">On</button>
-      <button class="btn btn-success" (click)="putAllOff()">Off</button>
-      <ul>
-         <app-appareil *ngFor = "let appareil of appareils; let i = index"
-                  [appareilName] = "i"
-                  [appareilName] = "appareil.name"
-                  [appareilStatus] = "appareil.status"
-         >
-         </app-appareil>
-      </ul>
-    </div>
-    <div class="col-xs-12">
-      <ul>
-         <app-post-list-component [postArr] ='posts'>
-         </app-post-list-component>
-      </ul>
-    </div>
+      <router-outlet></router-outlet>
   </div>
 </div>
 
