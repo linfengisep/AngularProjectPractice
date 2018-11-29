@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { PostListComponentComponent } from './post-list-component/post-list-component.component';
 import { PostListItemComponentComponent } from './post-list-item-component/post-list-item-component.component';
-
-import { AppareilService } from './services/appareil.service';
 import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule,Routes } from '@angular/router';
 
+import { AppareilService } from './services/appareil.service';
+import { AuthService } from './services/auth.service';
+import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
+
 const appRoutes : Routes = [
    {path:'appareils' , component:AppareilViewComponent },
+   {path:'appareils/:id' , component:SingleAppareilComponent },
    {path:'auth' , component:AuthComponent },
    {path:'' , component:AppareilViewComponent}
 ]
@@ -26,7 +29,8 @@ const appRoutes : Routes = [
     PostListItemComponentComponent,
     AppareilComponent,
     AppareilViewComponent,
-    AuthComponent
+    AuthComponent,
+    SingleAppareilComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ const appRoutes : Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [AppareilService],
+  providers: [AppareilService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule{
