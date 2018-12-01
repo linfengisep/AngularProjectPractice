@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.authStatus = authService.isAuth;
+      this.authStatus = this.authService.isAuth;
   }
 
   onSignIn(){
