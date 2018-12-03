@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./appareil-view.component.css']
 })
 export class AppareilViewComponent implements OnInit {
-   posts = [
+   postss = [
       {
          title: 'Gilet jaune',
          content: 'il y a des manifestation très grave à Avenue Champs-Élysé aujourd\'hui',
@@ -28,6 +28,7 @@ export class AppareilViewComponent implements OnInit {
          created_at:new Date(2018, 11, 17)
       }
    ];
+   posts=[];
    isAuth = false;
    appareils:any[];
    appareilSubscription:Subscription;
@@ -60,4 +61,11 @@ export class AppareilViewComponent implements OnInit {
       }
    }
 
+   onSave(){
+      this.appareilService.saveDeviceToServer();
+   }
+
+   onFetch(){
+      this.appareilService.getDeviceFromServer();
+   }
 }

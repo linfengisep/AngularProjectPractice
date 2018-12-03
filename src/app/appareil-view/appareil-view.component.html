@@ -12,7 +12,8 @@
 </div>
 <button class="btn btn-success" [disabled] = "! isAuth" (click)="putAllOn()">On</button>
 <button class="btn btn-success" [disabled] = "! isAuth" (click)="putAllOff()">Off</button>
-
+<button class ="btn btn-primary" (click)="onSave()">Enregistrer</button>
+<button class ="btn btn-primary" (click)="onFetch()">Charger</button>
 <div class="col-xs-12">
   <ul>
      <app-post-list-component [postArr] ='posts'>
