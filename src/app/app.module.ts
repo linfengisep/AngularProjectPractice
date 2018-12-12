@@ -21,15 +21,14 @@ import { AuthGuard } from './services/auth-guard.service';
 import { EditAppareilComponent } from './edit-appareil/edit-appareil.component';
 import { UserService } from './services/user.service';
 import { NewUserComponent } from './new-user/new-user.component';
+import { PostService } from './services/post.service';
+import { NewPostComponent } from './new-post/new-post.component';
 
 const appRoutes : Routes = [
-   {path:'appareils' , canActivate:[AuthGuard],component:AppareilViewComponent },
-   {path:'appareils/:id' ,canActivate:[AuthGuard], component:SingleAppareilComponent },
+   {path:'posts' , canActivate:[AuthGuard],component:PostListComponentComponent },
+   {path:'new' , canActivate:[AuthGuard],component:NewPostComponent },
    {path:'auth' , component:AuthComponent },
-   {path:'edit',component:EditAppareilComponent},
-   {path:'users' ,component:UserListComponent},
-   {path:'new-user',component:NewUserComponent},
-   {path:'' , component:AppareilViewComponent},
+   {path:'' , component:PostListComponentComponent},
    {path:'not-found' , component:PageNotFoundComponent },
    {path:'**' , redirectTo:'/not-found' },
 ]
@@ -46,7 +45,8 @@ const appRoutes : Routes = [
     PageNotFoundComponent,
     EditAppareilComponent,
     UserListComponent,
-    NewUserComponent
+    NewUserComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +56,7 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [AppareilService,AuthService,AuthGuard,UserService],
+  providers: [AppareilService,PostService,AuthService,AuthGuard,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule{

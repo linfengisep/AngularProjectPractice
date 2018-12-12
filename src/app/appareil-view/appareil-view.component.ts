@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppareilService} from '../services/appareil.service';
 import { Subscription } from 'rxjs';
+import { PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-appareil-view',
@@ -8,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./appareil-view.component.css']
 })
 export class AppareilViewComponent implements OnInit {
-   postss = [
+   postsss = [
       {
          title: 'Gilet jaune',
          content: 'il y a des manifestation très grave à Avenue Champs-Élysé aujourd\'hui',
@@ -33,7 +34,7 @@ export class AppareilViewComponent implements OnInit {
    appareils:any[];
    appareilSubscription:Subscription;
 
-   constructor(private appareilService :AppareilService){
+   constructor(private appareilService :AppareilService,private postService:PostService){
       setTimeout(
          ()=>{
          this.isAuth = true;
@@ -42,11 +43,13 @@ export class AppareilViewComponent implements OnInit {
 
    ngOnInit(){
       this.appareilSubscription = this.appareilService.appareilSubject.subscribe(
-         (appareils:any[])=>{
-            this.appareils = appareils;
+         (mAppareils:any[])=>{
+            this.appareils = mAppareils;
          }
       );
       this.appareilService.emitAppareilSubject();
+
+      //this.posts = this.postService.posts;
    }
 
    putAllOn(){
