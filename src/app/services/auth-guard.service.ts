@@ -2,6 +2,7 @@ import {ActivatedRouteSnapshot, RouterStateSnapshot,Router ,CanActivate} from '@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AuthService} from './auth.service';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthGuard implements CanActivate{
@@ -11,10 +12,17 @@ export class AuthGuard implements CanActivate{
       route:ActivatedRouteSnapshot,
       state:RouterStateSnapshot
    ):Observable<boolean> | Promise<boolean> | boolean {
-      if(this.authService.isAuth){
-         return true;
-      }else{
-         this.router.navigate(['/auth']);
-      }
+      return new Promise(
+         (resolve,reject)=>{
+         firebase.auth().onAuthStateChanged(
+         (user)=>{
+            if(user){
+               resolve(true);
+            }else{
+               this.router.navigate(['/auth','signin']);
+               resolve(false);
+            }
+         });
+      });
    }
 }

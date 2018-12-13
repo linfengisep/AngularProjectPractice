@@ -28,8 +28,6 @@ export class PostListItemComponentComponent implements OnInit {
    }
 
    onDeletePost(id:number){
-      console.log("click post to delete"+id);
-      this.postService.posts.splice(0,1);
-      this.postService.emitpostsSubject();
+     this.postService.deletePost(+id);
    }
 }

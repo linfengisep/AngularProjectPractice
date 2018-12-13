@@ -1,6 +1,7 @@
 export class Post{
-   constructor(public postTitle:string,
+   constructor(public postId:number,
+               public postTitle:string,
                public postContent:string,
                public postLoveIts:number,
-               public postCreation:Date){}
+               public postCreation:any){}
 }

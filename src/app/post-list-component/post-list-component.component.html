@@ -1,10 +1,10 @@
 <h2>Posts</h2>
 <app-post-list-item-component *ngFor = 'let post of postArr'
-      [postTitle]='post.title'
-      [postContent] = 'post.content'
-      [postLoveIts] = 'post.loveIts'
-      [postCreation] = 'post.created_at'
-      [postId] = 'post.id'
+      [postTitle]='post.postTitle'
+      [postContent] = 'post.postContent'
+      [postLoveIts] = 'post.postLoveIts'
+      [postCreation] = 'post.postCreation'
+      [postId] = 'post.postId'
    >
 </app-post-list-item-component>
 <button class ="btn btn-primary" (click)="onSave()">Enregistrer</button>
