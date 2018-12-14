@@ -4,11 +4,11 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-post-list-component',
-  templateUrl: './post-list-component.component.html',
-  styleUrls: ['./post-list-component.component.css']
+  selector: 'app-post-list',
+  templateUrl: './post-list.component.html',
+  styleUrls: ['./post-list.component.css']
 })
-export class PostListComponentComponent implements OnInit,OnDestroy {
+export class PostListComponent implements OnInit,OnDestroy {
    postArr: any[];
    postSubscription:Subscription;
    constructor(private postService:PostService,private router:Router) {

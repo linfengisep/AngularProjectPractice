@@ -6,8 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostListComponentComponent } from './post-list-component/post-list-component.component';
-import { PostListItemComponentComponent } from './post-list-item-component/post-list-item-component.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { PostListItemComponent } from './post-list-item/post-list-item.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthService } from './services/auth.service';
@@ -19,7 +19,7 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 
 const appRoutes : Routes = [
-   {path:'posts' , canActivate:[AuthGuard],component:PostListComponentComponent },
+   {path:'posts' , canActivate:[AuthGuard],component:PostListComponent },
    {path:'new' , canActivate:[AuthGuard],component:NewPostComponent },
    {path:'auth/signin',component:SigninComponent },
    {path:'auth/signup',component:SignupComponent },
@@ -31,8 +31,8 @@ const appRoutes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    PostListComponentComponent,
-    PostListItemComponentComponent,
+    PostListComponent,
+    PostListItemComponent,
     PageNotFoundComponent,
     NewPostComponent,
     HeaderComponent,

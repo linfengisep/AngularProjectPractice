@@ -1,12 +1,12 @@
 <h2>Posts</h2>
-<app-post-list-item-component *ngFor = 'let post of postArr'
+<app-post-list-item *ngFor = 'let post of postArr'
       [postTitle]='post.postTitle'
       [postContent] = 'post.postContent'
       [postLoveIts] = 'post.postLoveIts'
       [postCreation] = 'post.postCreation'
       [postId] = 'post.postId'
    >
-</app-post-list-item-component>
+</app-post-list-item>
 <button class ="btn btn-primary" (click)="onSave()">Enregistrer</button>
 <button class ="btn btn-primary" (click)="onFetch()">Charger</button>
 <button class="btn btn-success pull-right" (click)="onAddPost()">
