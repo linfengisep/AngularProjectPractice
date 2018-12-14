@@ -17,17 +17,15 @@ export class PostListItemComponentComponent implements OnInit {
    ngOnInit() {
   }
 
-   increase(){
-      this.postLoveIts++;
-      console.log("increasing:"+this.postLoveIts);
-}
-
-   decrease(){
-      this.postLoveIts--;
-      console.log("decreasing:"+this.postLoveIts)
+   increase(idPost:number){
+      this.postService.likeThisPost(idPost);
    }
 
-   onDeletePost(id:number){
-     this.postService.deletePost(+id);
+   decrease(idPost:number){
+      this.postService.dislikeThisPost(idPost);
+   }
+
+   onDeletePost(idPost:number){
+     this.postService.deletePost(idPost);
    }
 }

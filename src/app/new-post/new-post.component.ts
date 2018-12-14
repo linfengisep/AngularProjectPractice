@@ -27,7 +27,10 @@ export class NewPostComponent implements OnInit {
    }
    onSubmitForm(){
       const formValue = this.postForm.value;
-      const newPostId = this.postService.posts[(this.postService.posts.length-1)].postId+1;
+      let newPostId = 0;
+      if(this.postService.posts.length !== 0){
+         newPostId = this.postService.posts[(this.postService.posts.length-1)].postId+1;
+      }
       const loveIts = 0;
       const newPost = new Post(
                newPostId,

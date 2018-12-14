@@ -9,15 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-list-component.component.css']
 })
 export class PostListComponentComponent implements OnInit,OnDestroy {
-   isAuth=false;
    postArr: any[];
-
    postSubscription:Subscription;
    constructor(private postService:PostService,private router:Router) {
-      setTimeout(
-         ()=>{
-         this.isAuth = true;
-      },4000);
    }
 
    ngOnInit() {
@@ -25,11 +19,19 @@ export class PostListComponentComponent implements OnInit,OnDestroy {
          (posts:any[])=>{
             this.postArr = posts;
          });
-      this.postService.emitpostsSubject();
+      this.postService.emitPosts();
    }
 
    onAddPost(){
       this.router.navigate(['/new'])
+   }
+
+   onSave(){
+      this.postService.savePost();
+   }
+
+   onFetch(){
+      this.postService.fetchPost();
    }
    ngOnDestroy(){
       this.postSubscription.unsubscribe();

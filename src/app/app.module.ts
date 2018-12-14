@@ -12,7 +12,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
-import { UserService } from './services/user.service';
 import { PostService } from './services/post.service';
 import { NewPostComponent } from './new-post/new-post.component';
 import { HeaderComponent } from './header/header.component';
@@ -48,7 +47,7 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [PostService,AuthService,AuthGuard,UserService],
+  providers: [PostService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule{

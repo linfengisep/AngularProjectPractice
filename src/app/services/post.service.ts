@@ -1,41 +1,68 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Post } from '../models/Post.model';
-
+import * as firebase from 'firebase';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
    postsSubject = new Subject<Post[]>();
-   public posts:Post[] = [
-       {
-          postId:1,
-          postTitle: 'Gilet jaune',
-          postContent: 'il y a des manifestation très grave à Avenue Champs-Élysé aujourd\'hui',
-          postLoveIts: 2,
-          postCreation:Date.now()
-       }];
+   public posts:Post[]=[];
    constructor() { }
-   emitpostsSubject(){
+   emitPosts(){
       this.postsSubject.next(this.posts.slice());
    }
 
-   likeThisPost(index:number){
-      this.posts[index].postLoveIts++;
-      this.emitpostsSubject();
-   }
-   dislikeThisPost(index:number){
-      this.posts[index].postLoveIts--;
-      this.emitpostsSubject();
+   savePost(){
+      firebase.database().ref('/posts').set(this.posts);
    }
 
-   deletePost(id:number){
-      //console.log("click post to delete"+id);
-      this.posts.splice(id,1);
-      this.emitpostsSubject();
+   fetchPost(){
+      firebase.database().ref('/posts').on('value',
+         (data)=>{
+            this.posts = data.val()? data.val():[];
+            this.emitPosts();
+      })
+   }
+
+   likeThisPost(idPost:number){
+      const postIndexIncrease = this.posts.findIndex(
+         (postElement)=>{
+            if(postElement.postId === idPost){
+               return true;
+            }
+         }
+      )
+      this.posts[postIndexIncrease].postLoveIts++;
+      this.emitPosts();
+   }
+   dislikeThisPost(idPost:number){
+      const postIndexDecrease = this.posts.findIndex(
+         (postElement)=>{
+            if(postElement.postId === idPost){
+               return true;
+            }
+         }
+      );
+      this.posts[postIndexDecrease].postLoveIts--;
+      this.emitPosts();
+   }
+
+   deletePost(idPost:number){
+      const postIndexToDel = this.posts.findIndex(
+         (postElement)=>{
+            if(postElement.postId === idPost){
+               return true;
+            }
+         }
+      );
+
+      this.posts.splice(postIndexToDel,1);
+      this.emitPosts();
    }
 
    addPost(post:Post){
       this.posts.push(post);
+      this.emitPosts();
    }
 }
