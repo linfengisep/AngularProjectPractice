@@ -1,4 +1,7 @@
-# Project Angular practice
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+[Post-Angular-lien-Github](https://github.com/linfengisep/AngularProjectPractice)
 
-# Goal: learning Angular by following on line course, practicing with the project at the end of course.
+Une fois cloné depuis ce lien, veuillez exécuter les étapes suivants pour configurer le projet.
+
+1.cd AngularProjectPractice
+2.npm install firebase --save
+3.npm install bootstrap --save
